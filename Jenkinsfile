@@ -20,7 +20,7 @@ pipeline {
         stage('echo received source url') { 
             agent {docker { image 'gsscogs/databaker:latest' } }
             steps {
-               sh 'echo recieved source url: "${params.source}"'
+               sh 'echo recieved source url: ${params.source}'
             }
         }
 
