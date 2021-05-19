@@ -25,8 +25,8 @@ def get_unzip_source(zip_location):
 
     bucket = storage_client.get_bucket('data-source-bucket-ons')
 
-    blob = bucket.get_blob('remote/path/to/file.txt')
-    blob.download_to_filename(zip_location)
+    blob = bucket.get_blob(zip_location)
+    blob.download_to_filename(blob.name)
 
     with ZipFile(blob.name, 'r') as zipObj:
         zipObj.extractall()
