@@ -28,7 +28,7 @@ pipeline {
             agent {docker { image 'gsscogs/databaker:latest' } }
             steps {
                 withCredentials([[$class: 'FileBinding', credentialsId:"ons_source_bucket_credentials", variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                sh 'python3 getunzipsource.py "${params.source}"'
+                    sh 'python3 getunzipsource.py "${params.source}"'
                 }
             }
         }
