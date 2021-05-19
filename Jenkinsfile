@@ -23,5 +23,12 @@ pipeline {
                sh 'echo recieved source url: "${params.source}"'
             }
         }
+
+        stage('unzip all the things') { 
+            agent {docker { image 'gsscogs/databaker:latest' } }
+            steps {
+               sh 'python3 getunzipsource.py "${params.source}"'
+            }
+        }
     }
 }

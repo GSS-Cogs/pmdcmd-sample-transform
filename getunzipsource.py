@@ -9,6 +9,7 @@ from zipfile import ZipFile
 if os.path.isdir("source"):
     shutil.rmtree("source")
 
+
 def get_client():
     """
     Get a storage client
@@ -19,6 +20,7 @@ def get_client():
         raise Exception("Unable to get storage client. Aborting operation:") from err
         
     return storage_client
+
 
 def get_unzip_source(zip_location):
     storage_client = get_client()
