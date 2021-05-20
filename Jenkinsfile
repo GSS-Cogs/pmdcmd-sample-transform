@@ -10,13 +10,6 @@ pipeline {
     }
 
     stages {
-        stage('log out python packages') {
-            agent { docker { image 'gsscogs/databaker:latest' } }
-            steps {
-                sh "pip freeze"
-            }
-        }
-
         stage('echo received source url') { 
             agent {docker { image 'gsscogs/databaker:latest' } }
             steps {
@@ -32,5 +25,13 @@ pipeline {
                 }
             }
         }
+
+       stage('echo received files') { 
+            agent {docker { image 'gsscogs/databaker:latest' } }
+            steps {
+               sh "ls -l ./source"
+            }
+        }
+
     }
 }

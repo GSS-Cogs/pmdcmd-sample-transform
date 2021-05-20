@@ -29,12 +29,9 @@ def get_unzip_source(zip_location):
     storage_client = get_client()
 
     bucket = storage_client.get_bucket('data-source-bucket-ons')
-
-    print(f'Python got zip download location as: {zip_location}')
     blob = bucket.get_blob(zip_location)
     
     output_zip = blob.name.split('/')[1]  # the file from folder/thing.zip
-    print(f'Downloading to file {source_dir / output_zip}')
     blob.download_to_filename(source_dir / output_zip)
 
     with ZipFile(source_dir / output_zip, 'r') as zipObj:
