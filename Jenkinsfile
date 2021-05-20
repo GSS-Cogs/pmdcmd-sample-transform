@@ -13,14 +13,14 @@ pipeline {
         stage('log out python packages') {
             agent { docker { image 'gsscogs/databaker:latest' } }
             steps {
-                sh 'pip freeze'
+                sh "pip freeze"
             }
         }
 
         stage('echo received source url') { 
             agent {docker { image 'gsscogs/databaker:latest' } }
             steps {
-               sh 'echo recieved source url: ${params.source}'
+               sh "echo recieved source url: ${params.source}"
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
             agent {docker { image 'gsscogs/databaker:latest' } }
             steps {
                 withCredentials([[$class: 'FileBinding', credentialsId:"ons_source_bucket_credentials", variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                    sh 'python3 getunzipsource.py "${params.source}"'
+                    sh "python3 getunzipsource.py ${params.source}"
                 }
             }
         }
