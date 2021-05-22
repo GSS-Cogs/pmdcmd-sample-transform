@@ -1,3 +1,3 @@
-@Library('pmd@family-pmd4-cmd') _
+@Library('pmd@family-pmd4') _
 
 familyTransformPipeline {}
